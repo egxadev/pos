@@ -7,10 +7,10 @@ createInertiaApp({
     resolve: (name) => require(`./Pages/${name}`),
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
-            //set mixins
+            // SET MIXINS
             .mixin({
                 methods: {
-                    //method "hasAnyPermission"
+                    //METHOD "hasAnyPermission"
                     hasAnyPermission: function (permissions) {
                         //get permissions from props
                         let allPermissions = this.$page.props.auth.permissions;
@@ -21,6 +21,14 @@ createInertiaApp({
                         });
 
                         return hasPermission;
+                    },
+
+                    // FORMAT PRICE
+                    formatPrice(value) {
+                        let val = (value / 1).toFixed(0).replace(".", ",");
+                        return val
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                     },
                 },
             })
