@@ -19475,8 +19475,8 @@ chart_js__WEBPACK_IMPORTED_MODULE_4__.Chart.register.apply(chart_js__WEBPACK_IMP
 
 
     function getRandomColor() {
-      var letters = "0123456789ABCDEF".split("");
-      var color = "#";
+      var letters = '0123456789ABCDEF'.split('');
+      var color = '#';
 
       for (var i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
@@ -19561,10 +19561,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   setup: function setup() {
     // DEFINE STATE SEARCH
-    var search = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)( false || new URL(document.location).searchParams.get("q")); // DEFINE METHOD SEARCH
+    var search = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)( false || new URL(document.location).searchParams.get('q')); // DEFINE METHOD SEARCH
 
     var handleSearch = function handleSearch() {
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_4__.Inertia.get("/apps/permissions", {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_4__.Inertia.get('/apps/permissions', {
         // SEND PARAMS 'Q' WITH VALUE FROM STATE 'search'
         q: search.value
       });
@@ -19614,12 +19614,12 @@ __webpack_require__.r(__webpack_exports__);
   setup: function setup() {
     // DEFINE STATE
     var form = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
-      email: ""
+      email: ''
     }); // METHOD
 
     var submit = function submit() {
       // SEND DATA TO SERVER
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/forgot-password", {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post('/forgot-password', {
         // DATA
         email: form.email
       });
@@ -19674,13 +19674,13 @@ __webpack_require__.r(__webpack_exports__);
   setup: function setup() {
     // DEFINE STATE
     var form = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     }); // METHOD
 
     var submit = function submit() {
       // SEND DATA TO SERVER
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/login", {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post('/login', {
         // DATA
         email: form.email,
         password: form.password
@@ -19734,14 +19734,14 @@ __webpack_require__.r(__webpack_exports__);
     // DEFINE STATE
     var form = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
       email: props.route.query.email,
-      password: "",
-      password_confirmation: "",
+      password: '',
+      password_confirmation: '',
       token: props.route.params.token
     }); // METHOD
 
     var submit = function submit() {
       // SEND DATA TO SERVER
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/reset-password", {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post('/reset-password', {
         // DATA
         email: form.email,
         password: form.password,
@@ -20413,8 +20413,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["c-sidebar c-sidebar-dark c-sidebar-fixed", {
       'c-sidebar-lg-show': !_ctx.$page.url.startsWith('/apps/transactions')
-    }]),
-    id: "sidebar"
+    }])
   }, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" sidebar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Sidebar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end sidebar ")], 2
   /* CLASS */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" header "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end header "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end content "), _hoisted_5])])]);
@@ -20570,7 +20569,7 @@ var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "font-weight-bold"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa fa-chart-pie"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" BEST SELIING PRODUCT ")])], -1
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" BEST SELLING PRODUCT ")])], -1
 /* HOISTED */
 );
 
@@ -20662,7 +20661,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     )]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_36, " Data Tidak Tersedia!. "))])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])])], 64
+  ))])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_36, " Data Tidak Tersedia! "))])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])])], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -21028,7 +21027,7 @@ var _hoisted_18 = {
   "class": "col-12 mb-3 text-end"
 };
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Forgot Password? ");
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Forgot Password' ");
 
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col-12"

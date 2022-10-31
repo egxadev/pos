@@ -105,7 +105,7 @@
 import LayoutApp from '../../../Layouts/App.vue';
 
 //import Head and useForm from Inertia
-import { Head } from 'inertiajs/inertia-vue3';
+import { Head } from '@inertiajs/inertia-vue3';
 
 // import ref from vue
 import { ref } from 'vue';
