@@ -1,4 +1,5 @@
 <template>
+
     <Head>
         <title>Login Account - Aplikasi Kasir</title>
     </Head>
@@ -11,19 +12,14 @@
                 </a>
             </div>
             <div class="card-group">
-                <div
-                    class="card border-top-purple border-0 shadow-sm rounded-3"
-                >
+                <div class="card border-top-purple border-0 shadow-sm rounded-3">
                     <div class="card-body">
                         <div class="text-start">
                             <h5>LOGIN ACCOUNT</h5>
                             <p class="text-muted">Sign In to your account</p>
                         </div>
                         <hr />
-                        <div
-                            v-if="session.status"
-                            class="alert alert-success mt-2"
-                        >
+                        <div v-if="session.status" class="alert alert-success mt-2">
                             {{ session.status }}
                         </div>
                         <form @submit.prevent="submit">
@@ -33,15 +29,7 @@
                                         <i class="fa fa-envelope"></i>
                                     </span>
                                 </div>
-                                <input
-                                    class="form-control"
-                                    v-model="form.email"
-                                    v-bind:class="{
-                                        'is-invalid': errors.email,
-                                    }"
-                                    type="email"
-                                    placeholder="Email Address"
-                                />
+                                <input class="form-control" v-model="form.email" v-bind:class="{ 'is-invalid': errors.email }" type="email" placeholder="Email Address" />
                             </div>
                             <div v-if="errors.email" class="alert alert-danger">
                                 {{ errors.email }}
@@ -53,34 +41,21 @@
                                         <i class="fa fa-lock"></i>
                                     </span>
                                 </div>
-                                <input
-                                    class="form-control"
-                                    v-model="form.password"
-                                    v-bind:class="{
-                                        'is-invalid': errors.password,
-                                    }"
-                                    type="password"
-                                    placeholder="Password"
-                                />
+                                <input class="form-control" v-model="form.password" v-bind:class="{ 'is-invalid': errors.password }" type="password"
+                                    placeholder="Password" />
                             </div>
-                            <div
-                                v-if="errors.password"
-                                class="alert alert-danger"
-                            >
+                            <div v-if="errors.password" class="alert alert-danger">
                                 {{ errors.password }}
                             </div>
 
                             <div class="row">
                                 <div class="col-12 mb-3 text-end">
                                     <Link href="/forgot-password">
-                                        Forgot Password?
+                                    Forgot Password'
                                     </Link>
                                 </div>
                                 <div class="col-12">
-                                    <button
-                                        class="btn btn-primary shadow-sm rounded-sm px-4 w-100"
-                                        type="submit"
-                                    >
+                                    <button class="btn btn-primary shadow-sm rounded-sm px-4 w-100" type="submit">
                                         LOGIN
                                     </button>
                                 </div>
@@ -95,16 +70,16 @@
 
 <script>
 // IMPORT LAYOUT
-import LayoutAuth from "../../Layouts/Auth.vue";
+import LayoutAuth from '../../Layouts/Auth.vue';
 
 // IMPORT LAYOUT
-import { reactive } from "vue";
+import { reactive } from 'vue';
 
 // IMPORT INERTIA ADAPTER
-import { Inertia } from "@inertiajs/inertia";
+import { Inertia } from '@inertiajs/inertia';
 
 // IMPORT Header AND UseForm FROM INERTIA
-import { Head, Link } from "@inertiajs/inertia-vue3";
+import { Head, Link } from '@inertiajs/inertia-vue3';
 
 export default {
     // LAYOUT
@@ -125,14 +100,14 @@ export default {
     setup() {
         // DEFINE STATE
         const form = reactive({
-            email: "",
-            password: "",
+            email: '',
+            password: '',
         });
 
         // METHOD
         const submit = () => {
             // SEND DATA TO SERVER
-            Inertia.post("/login", {
+            Inertia.post('/login', {
                 // DATA
                 email: form.email,
                 password: form.password,
@@ -148,4 +123,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>

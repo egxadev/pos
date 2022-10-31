@@ -1,4 +1,5 @@
 <template>
+
     <Head>
         <title>Forgot Password - Aplikasi Kasir</title>
     </Head>
@@ -11,18 +12,13 @@
                 </a>
             </div>
             <div class="card-group">
-                <div
-                    class="card border-top-purple border-0 shadow-sm rounded-3"
-                >
+                <div class="card border-top-purple border-0 shadow-sm rounded-3">
                     <div class="card-body">
                         <div class="text-start">
                             <h5>RESET PASSWORD</h5>
                         </div>
                         <hr />
-                        <div
-                            v-if="session.status"
-                            class="alert alert-success mt-2"
-                        >
+                        <div v-if="session.status" class="alert alert-success mt-2">
                             {{ session.status }}
                         </div>
                         <form @submit.prevent="submit">
@@ -32,25 +28,14 @@
                                         <i class="fa fa-envelope"></i>
                                     </span>
                                 </div>
-                                <input
-                                    class="form-control"
-                                    v-model="form.email"
-                                    v-bind:class="{
-                                        'is-invalid': errors.email,
-                                    }"
-                                    type="email"
-                                    placeholder="Email Address"
-                                />
+                                <input class="form-control" v-model="form.email" v-bind:class="{ 'is-invalid': errors.email }" type="email" placeholder="Email Address" />
                             </div>
                             <div v-if="errors.email" class="alert alert-danger">
                                 {{ errors.email }}
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <button
-                                        class="btn btn-primary shadow-sm rounded-sm px-4 w-100"
-                                        type="submit"
-                                    >
+                                    <button class="btn btn-primary shadow-sm rounded-sm px-4 w-100" type="submit">
                                         SEND PASSWORD RESET LINK
                                     </button>
                                 </div>
@@ -64,10 +49,10 @@
 </template>
 
 <script>
-import LayoutAuth from "../../Layouts/Auth.vue";
-import { reactive } from "vue";
-import { Inertia } from "@inertiajs/inertia";
-import { Head, Link } from "@inertiajs/inertia-vue3";
+import LayoutAuth from '../../Layouts/Auth.vue';
+import { reactive } from 'vue';
+import { Inertia } from '@inertiajs/inertia';
+import { Head, Link } from '@inertiajs/inertia-vue3';
 
 export default {
     // LAYOUT
@@ -88,13 +73,13 @@ export default {
     setup() {
         // DEFINE STATE
         const form = reactive({
-            email: "",
+            email: '',
         });
 
         // METHOD
         const submit = () => {
             // SEND DATA TO SERVER
-            Inertia.post("/forgot-password", {
+            Inertia.post('/forgot-password', {
                 // DATA
                 email: form.email,
             });
