@@ -9,7 +9,8 @@
             <div class="fade-in">
                 <div class="row">
                     <div class="col-md-8">
-                        <div v-if="hasAnyPermission(['dashboard.sales_chart'])" class="card border-0 rounded-3 shadow border-top-purple">
+                        <div v-if="hasAnyPermission(['dashboard.sales_chart'])"
+                            class="card border-0 rounded-3 shadow border-top-purple">
                             <div class="card-header">
                                 <span class="font-weight-bold">
                                     <i class="fa fa-chart-bar"></i> SALES CHART 7 DAYS
@@ -21,7 +22,8 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div v-if="hasAnyPermission(['dashboard.sales_today'])" class="card border-0 rounded-3 shadow border-top-info mb-4">
+                        <div v-if="hasAnyPermission(['dashboard.sales_today'])"
+                            class="card border-0 rounded-3 shadow border-top-info mb-4">
                             <div class="card-header">
                                 <span class="font-weight-bold">
                                     <i class="fa fa-chart-line"></i> SALES TODAY
@@ -36,7 +38,8 @@
                             </div>
                         </div>
 
-                        <div v-if="hasAnyPermission(['dashboard.profits_today'])" class="card border-0 rounded-3 shadow border-top-success">
+                        <div v-if="hasAnyPermission(['dashboard.profits_today'])"
+                            class="card border-0 rounded-3 shadow border-top-success">
                             <div class="card-header">
                                 <span class="font-weight-bold">
                                     <i class="fa fa-chart-bar"></i> PROFITS TODAY
@@ -53,7 +56,8 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <div v-if="hasAnyPermission(['dashboard.best_selling_product'])" class="card border-0 rounded-3 shadow border-top-warning">
+                        <div v-if="hasAnyPermission(['dashboard.best_selling_product'])"
+                            class="card border-0 rounded-3 shadow border-top-warning">
                             <div class="card-header">
                                 <span class="font-weight-bold">
                                     <i class="fa fa-chart-pie"></i> BEST SELLING PRODUCT
@@ -65,7 +69,8 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div v-if="hasAnyPermission(['dashboard.product_stock'])" class="card border-0 rounded-3 shadow border-top-danger">
+                        <div v-if="hasAnyPermission(['dashboard.product_stock'])"
+                            class="card border-0 rounded-3 shadow border-top-danger">
                             <div class="card-header">
                                 <span class="font-weight-bold">
                                     <i class="fa fa-box-open"></i> PRODUCT STOCK
