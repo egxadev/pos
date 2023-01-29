@@ -1,7 +1,7 @@
 <template>
 
     <Head>
-        <title>Edit Role - Aplikasi Kasir</title>
+        <title>Edit Category - BookStore</title>
     </Head>
     <main class="c-main">
         <div class="container-fluid">
@@ -10,37 +10,36 @@
                     <div class="col-md-12">
                         <div class="card border-0 rounded-3 shadow border-top-purple">
                             <div class="card-header">
-                                <span class="font-weight-bold"><i class="fa fa-shield-alt"></i> EDIT ROLE</span>
+                                <span class="font-weight-bold"><i class="fa fa-folder"></i> EDIT CATEGORY</span>
                             </div>
                             <div class="card-body">
 
                                 <form @submit.prevent="submit">
-
                                     <div class="mb-3">
-                                        <label class="fw-bold">Role Name</label>
+                                        <input class="form-control" @input="form.image = $event.target.files[0]"
+                                            :class="{ 'is-invalid': errors.imafe }" type="file">
+                                    </div>
+                                    <div v-if="errors.image" class="alert alert-danger">
+                                        {{ errors.image }}
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="fw-bold">Category Name</label>
                                         <input class="form-control" v-model="form.name"
-                                            v-bind:class="{ 'is-invalid': errors.name }" type="text"
-                                            placeholder="Role Name">
-
-                                        <div v-if="errors.name" class="alert alert-danger">
-                                            {{ errors.name }}
-                                        </div>
+                                            :class="{ 'is-invalid': errors.name }" type="text"
+                                            placeholder="Category Name">
                                     </div>
-
-                                    <hr>
+                                    <div v-if="errors.name" class="alert alert-danger">
+                                        {{ errors.name }}
+                                    </div>
                                     <div class="mb-3">
-                                        <label class="fw-bold">Permissions</label>
-                                        <br>
-                                        <div class="form-check form-check-inline"
-                                            v-for="(permission, index) in permissions" v-bind:key="index">
-                                            <input class="form-check-input" type="checkbox" v-model="form.permissions"
-                                                v-bind:value="permission.name" v-bind:id="`check-${permission.id}`">
-                                            <label class="form-check-label" v-bind:for="`check-${permission.id}`">{{
-                                                permission.name
-                                            }}</label>
-                                        </div>
+                                        <label class="fw-bold">Description</label>
+                                        <textarea class="form-control" v-model="form.description"
+                                            :class="{ 'is-invalid': errors.description }" type="text" rows="4"
+                                            placeholder="Description"></textarea>
                                     </div>
-
+                                    <div v-if="errors.description" class="alert alert-danger">
+                                        {{ errors.description }}
+                                    </div>
                                     <div class="row">
                                         <div class="col-12">
                                             <button class="btn btn-primary shadow-sm rounded-sm"
@@ -50,6 +49,7 @@
                                         </div>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                     </div>
@@ -73,51 +73,50 @@ export default {
     // COMPONENTS
     components: {
         Head,
-        Link
+        Link,
     },
 
     // PROPS
     props: {
         errors: Object,
-        permissions: Array,
-        role: Object
+        category: Object,
     },
 
     setup(props) {
-        // DEFINE FORM STATE
+        // STATE FORM
         const form = reactive({
-            name: props.role.name,
-            permissions: props.role.permissions.map(obj => obj.name),
+            name: props.category.name,
+            description: props.category.description,
+            image: '',
         });
 
-        // DEFINE METHOD "SUBMIT"
+        // METHOD SUBMIT
         const submit = () => {
             // SEND DATA TO SERVER
-            Inertia.put(`/apps/roles/${props.role.id}`, {
+            Inertia.post(`/apps/categories/${props.category.id}`, {
                 // DATA
+                _method: 'PUT',
                 name: form.name,
-                permissions: form.permissions,
+                description: form.description,
+                image: form.image,
             }, {
                 onSuccess: () => {
                     // SHOW SUCCESS ALERT
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Role updated successfully.',
+                        text: 'Category updated successfully.',
                         icon: 'success',
                         showConfirmButton: false,
                         timer: 2000
-                    })
+                    });
                 }
-            })
+            });
         }
 
         return {
             form,
-            submit
+            submit,
         };
     }
-
-
-
 }
 </script>
