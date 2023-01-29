@@ -1,7 +1,7 @@
 <template>
 
     <Head>
-        <title>Edit Category - BookStore</title>
+        <title>Edit Category - Aplikasi Kasir</title>
     </Head>
     <main class="c-main">
         <div class="container-fluid">
@@ -17,7 +17,7 @@
                                 <form @submit.prevent="submit">
                                     <div class="mb-3">
                                         <input class="form-control" @input="form.image = $event.target.files[0]"
-                                            :class="{ 'is-invalid': errors.imafe }" type="file">
+                                            v-bind:class="{ 'is-invalid': errors.image }" type="file">
                                     </div>
                                     <div v-if="errors.image" class="alert alert-danger">
                                         {{ errors.image }}
@@ -34,7 +34,7 @@
                                     <div class="mb-3">
                                         <label class="fw-bold">Description</label>
                                         <textarea class="form-control" v-model="form.description"
-                                            :class="{ 'is-invalid': errors.description }" type="text" rows="4"
+                                            v-bind:class="{ 'is-invalid': errors.description }" type="text" rows="4"
                                             placeholder="Description"></textarea>
                                     </div>
                                     <div v-if="errors.description" class="alert alert-danger">
