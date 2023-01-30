@@ -26,37 +26,42 @@
 
                                     </div>
                                 </form>
-                                <table class="table table-responsive table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Barcode</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Buy Price</th>
-                                            <th scope="col">Sell Price</th>
-                                            <th scope="col">Stock</th>
-                                            <th scope="col" style="width:20%">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="(product, index) in products.data" v-bind:key="index">
-                                            <td class="text-center">{{ product.barcode }}</td>
-                                            <td>{{ product.title }}</td>
-                                            <td>Rp. {{ formatPrice(product.buy_price) }}</td>
-                                            <td>Rp. {{ formatPrice(product.sell_price) }}</td>
-                                            <td>{{ product.stock }}</td>
-                                            <td class="text-center">
-                                                <Link v-bind:href="`/apps/products/${product.id}/edit`"
-                                                    v-if="hasAnyPermission(['products.edit'])"
-                                                    class="btn btn-success btn-sm me-2"><i
-                                                    class="fa fa-pencil-alt me-1"></i> EDIT</Link>
-                                                <button @click.prevent="destroy(product.id)"
-                                                    v-if="hasAnyPermission(['products.delete'])"
-                                                    class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
-                                                    DELETE</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Barcode</th>
+                                                <th scope="col">Title</th>
+                                                <th scope="col">Buy Price</th>
+                                                <th scope="col">Sell Price</th>
+                                                <th scope="col">Stock</th>
+                                                <th scope="col" style="width:20%">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(product, index) in products.data" v-bind:key="index">
+                                                <td class="text-center">
+                                                    <Barcode v-bind:value="product.barcode" v-bind:format="'CODE39'"
+                                                        v-bind:lineColor="'#000'" v-bind:width="1" v-bind:height="20" />
+                                                </td>
+                                                <td>{{ product.title }}</td>
+                                                <td>Rp. {{ formatPrice(product.buy_price) }}</td>
+                                                <td>Rp. {{ formatPrice(product.sell_price) }}</td>
+                                                <td>{{ product.stock }}</td>
+                                                <td class="text-center">
+                                                    <Link v-bind:href="`/apps/products/${product.id}/edit`"
+                                                        v-if="hasAnyPermission(['products.edit'])"
+                                                        class="btn btn-success btn-sm me-2"><i
+                                                        class="fa fa-pencil-alt me-1"></i> EDIT</Link>
+                                                    <button @click.prevent="destroy(product.id)"
+                                                        v-if="hasAnyPermission(['products.delete'])"
+                                                        class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
+                                                        DELETE</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <Pagination v-bind:links="products.links" align="end" />
                             </div>
                         </div>
@@ -74,6 +79,7 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
 import { ref } from 'vue';
 import Swal from 'sweetalert2';
+import Barcode from '../../../Components/Barcode.vue';
 
 export default {
     // LAYOUT
@@ -84,6 +90,7 @@ export default {
         Head,
         Link,
         Pagination,
+        Barcode,
     },
 
     // PROPS
