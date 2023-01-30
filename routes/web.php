@@ -42,5 +42,9 @@ Route::prefix('apps')->group(function () {
         // ROUTE RESOURCE CATEGORIES
         Route::resource('/categories', \App\Http\Controllers\Apps\CategoryController::class, ['as' => 'apps'])
             ->middleware('permission:categories.index|categories.create|categories.edit|categories.delete');
+
+        // ROUTE RESOURCE PRODUCTS
+        Route::resource('/products', \App\Http\Controllers\Apps\ProductController::class, ['as' => 'apps'])
+            ->middleware('permission:products.index|products.create|products.edit|products.delete');
     });
 });
