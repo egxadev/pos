@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Apps;
 
-use App\Models\Cart;
 use Inertia\Inertia;
+use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Customer;
 use App\Models\Transaction;
@@ -32,7 +32,7 @@ class TransactionController extends Controller
         // RETURN VIEW
         return Inertia::render('Apps/Transactions/Index', [
             'carts'         => $carts,
-            'cart_total'    => $carts->sum('price'),
+            'carts_total'   => $carts->sum('price'),
             'customers'     => $customers
         ]);
     }
@@ -72,22 +72,24 @@ class TransactionController extends Controller
         // CHECK STOCK PRODUCT
         if (Product::whereId($request->product_id)->first()->stock < $request->qty) {
             // REDIRECT
-            return redirect()->back()->with(['error', 'Out of Stock Product!']);
+            return redirect()->back()->with('error', 'Out of Stock Product!');
         }
 
         // CHECK CART
         $cart = Cart::with('product')
             ->where('product_id', $request->product_id)
-            ->where('cashier_id', $request->cashier_id)
+            ->where('cashier_id', auth()->user()->id)
             ->first();
 
+        // IF CART ALREADY EXIST
         if ($cart) {
             // INCREMENT QTY
             $cart->increment('qty', $request->qty);
 
             // SUM PRICE * QTY
-            $cart->price = $cart->product->sell_price * $request->qty;
+            $cart->price = $cart->product->sell_price * $cart->qty;
 
+            // SAVE
             $cart->save();
         } else {
             // INSERT CART
@@ -100,7 +102,7 @@ class TransactionController extends Controller
         }
 
         // RETURN REDIRECT
-        return redirect()->route('apps.transaction.index')->with('success', 'Product Added Successfully!.');
+        return redirect()->route('apps.transactions.index')->with('success', 'Product Added Successfully!');
     }
 
     /**
@@ -123,6 +125,12 @@ class TransactionController extends Controller
         return redirect()->back()->with('success', 'Product Removed Successfully!.');
     }
 
+    /**
+     * store
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function store(Request $request)
     {
         // GENERATE INVOICE NUMBER
@@ -150,7 +158,6 @@ class TransactionController extends Controller
 
         // INSERT TRANSACTION DETAIL
         foreach ($carts as $cart) {
-
             //insert transaction detail
             $transaction->details()->create([
                 'transaction_id'    => $transaction->id,
@@ -166,7 +173,7 @@ class TransactionController extends Controller
             //get profits
             $profits = $total_sell_price - $total_buy_price;
 
-            //insert provits
+            //insert profits
             $transaction->profits()->create([
                 'transaction_id'    => $transaction->id,
                 'total'             => $profits,
