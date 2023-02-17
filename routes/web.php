@@ -70,5 +70,20 @@ Route::prefix('apps')->group(function () {
             //route transaction print
             Route::get('/print', [\App\Http\Controllers\Apps\TransactionController::class, 'print'])->name('apps.transactions.print');
         });
+
+        // ROUTE SALES
+        Route::prefix('sales')->group(function () {
+            // route sale index
+            Route::get('/', [\App\Http\Controllers\Apps\SaleController::class, 'index'])->middleware('permission:sales.index')->name('apps.sales.index');
+
+            // route sale index
+            Route::get('/filter', [\App\Http\Controllers\Apps\SaleController::class, 'filter'])->name('apps.sales.filter');
+
+            // route sales export excel
+            Route::get('/export', [\App\Http\Controllers\Apps\SaleController::class, 'export'])->name('apps.sales.export');
+
+            // route sales export pdf
+            Route::get('/pdf', [\App\Http\Controllers\Apps\SaleController::class, 'pdf'])->name('apps.sales.pdf');
+        });
     });
 });
