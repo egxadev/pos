@@ -86,4 +86,19 @@ Route::prefix('apps')->group(function () {
             Route::get('/pdf', [\App\Http\Controllers\Apps\SaleController::class, 'pdf'])->name('apps.sales.pdf');
         });
     });
+
+    // ROUTE PROFITS
+    Route::prefix('profits')->group(function () {
+        // route profit index
+        Route::get('/', [\App\Http\Controllers\Apps\ProfitController::class, 'index'])->middleware('permission:profits.index')->name('apps.profits.index');
+
+        // route profit index
+        Route::get('/filter', [\App\Http\Controllers\Apps\ProfitController::class, 'filter'])->name('apps.profits.filter');
+
+        // route profit export excel
+        Route::get('/export', [\App\Http\Controllers\Apps\ProfitController::class, 'export'])->name('apps.profits.export');
+
+        // route profit export pdf
+        Route::get('/pdf', [\App\Http\Controllers\Apps\ProfitController::class, 'pdf'])->name('apps.profits.pdf');
+    });
 });
